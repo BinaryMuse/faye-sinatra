@@ -1,0 +1,31 @@
+%p
+  Room Name:
+  %input{:type => "text", :size => "10", :value => @room}
+%p
+  Hello,
+  %span#username= @username
+
+#chat-log
+#input
+  %form#chat
+    %input{:type => "text", :size => "30"}
+
+#hidden{:'data-faye' => faye_path, :'data-room' => @room}
+
+:javascript
+  var faye_js = $("#hidden").attr("data-faye");
+  var room    = $("#hidden").attr("data-room");
+  var username = $("#username").text();
+
+  var client = new Faye.Client(faye_js, {timeout: 120});
+  var subscription = client.subscribe("/" + room, function(msg) {
+    $("#chat-log").append("<p>" + msg + "</p>");
+  });
+
+  $("form#chat").submit(function(event) {
+    event.preventDefault();
+    msg = username + ": " + $(this).children("input").val();
+    client.publish("/" + room, msg);
+    $(this).children("input").val("");
+  });
+

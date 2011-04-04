@@ -1,0 +1,21 @@
+%p
+  %a#create-room{:href => "#"} Create a room
+  %br
+  %a#join-room{:href => "#"} Join a room
+
+%div#create
+  %form{:action => "/create", :method => "get"}
+    Your name:
+    %input{:type => "text", :name => "username", :size => "20"}
+    %br
+    %input{:type => "submit"}
+
+%div#join
+  %form{:action => "/join", :method => "get"}
+    Your name:
+    %input{:type => "text", :name => "username", :size => "20"}
+    %br
+    Room name:
+    %input{:type => "text", :name => "room", :size => "20"}
+    %br
+    %input{:type => "submit"}

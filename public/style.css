@@ -1,0 +1,32 @@
+* body {
+  font-family: Arial, sans-serif;
+}
+
+div#create {
+  display: none;
+}
+
+div#join {
+  display: none;
+}
+
+div#chat-log {
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+div#chat-log p {
+  margin: 0;
+  padding: 0;
+}
+
+form#chat {
+  width: 400px;
+  border: 1px solid black;
+}
+
+form#chat input {
+  width: 390px;
+  font-size: 16pt;
+}
