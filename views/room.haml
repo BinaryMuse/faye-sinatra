@@ -20,6 +20,7 @@
   var client = new Faye.Client(faye_js, {timeout: 120});
   var subscription = client.subscribe("/" + room, function(msg) {
     $("#chat-log").append("<p>" + msg + "</p>");
+    $("#chat-log").attr({ scrollTop: $("#chat-log").attr("scrollHeight") });
   });
 
   $("form#chat").submit(function(event) {
